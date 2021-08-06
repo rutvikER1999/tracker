@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Spacer from './Spacer';
 import { useNavigation } from "@react-navigation/native";
-
+import * as RootNavigation from '../../RootNavigation';
 const NavLink = ({ text, routeName }) => {
 
   const navigation = useNavigation();

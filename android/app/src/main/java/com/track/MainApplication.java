@@ -1,5 +1,5 @@
 package com.track;
-
+import com.airbnb.android.react.maps.MapsPackage;
 import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
@@ -26,6 +26,8 @@ public class MainApplication extends Application implements ReactApplication {
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
+          packages.add(new MainReactPackage());
+          packages.add(new MapsPackage());
           return packages;
         }
 

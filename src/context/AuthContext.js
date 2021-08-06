@@ -24,7 +24,7 @@ const tryLocalSignin = dispatch => async () => {
     dispatch({ type: 'signin', payload: token });
     RootNavigation.navigate('BottomTab');
   } else {
-    RootNavigation.navigate('Signup');
+    RootNavigation.navigate('SigninStack');
   }
 };
 

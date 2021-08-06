@@ -1,11 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import AuthForm from '../components/AuthForm';
 import NavLink from '../components/NavLink';
 import { Context } from '../context/AuthContext';
+import { useNavigation } from '@react-navigation/native';
 
 const SigninScreen = () => {
+
   const { state, signin, clearErrorMessage } = useContext(Context);
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    const subscribe = navigation.addListener('focus', () => {
+      clearErrorMessage();
+    })
+    return () => {
+      return subscribe();
+    }
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -17,7 +29,7 @@ const SigninScreen = () => {
       />
       <NavLink
         text="Dont have an account? Sign up instead"
-        routeName="Signup"
+        routeName="SignupScreen"
       />
     </View>
   );
