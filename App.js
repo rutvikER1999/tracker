@@ -17,6 +17,7 @@ import AccountScreen from './src/screens/AccountScreen';
 //context providers
 import { Provider as AuthProvider, Context as AuthContext } from './src/context/AuthContext';
 import { Provider as LocationProvider } from './src/context/LocationContext';
+import { Provider as TrackProvider } from './src/context/TrackContex';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 
 //tracklist and trackdetails screen flow
@@ -61,10 +62,12 @@ const App = () => {
 
 export default () => {
   return (
-    <LocationProvider>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-    </LocationProvider>
+    <TrackProvider>
+      <LocationProvider>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </LocationProvider>
+    </TrackProvider>
   );
 };
