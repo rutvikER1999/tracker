@@ -2,34 +2,27 @@ import '../_mockLocation';
 import React, { useEffect, useState, useContext } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Map from '../components/Map';
-import Geolocation from 'react-native-location';
-import { Button } from 'react-native-elements/dist/buttons/Button';
 import { Context as LocationContext } from '../context/LocationContext';
 import useLocation from '../hooks/useLocation';
+import { useIsFocused } from '@react-navigation/native';
+import TrackForm from '../components/TrackForm';
 
-// const getCurrentLocation = async () => {
-//   console.log('runnn')
-//   try {
-//     const loc = await Geolocation.getLatestLocation((location) => console.log(location), (err) => console.log(err));
-//     console.log('ddd', loc)
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
 
 
 const TrackCreateScreen = () => {
-  const { addLocation } = useContext(LocationContext);
-  const [err] = useLocation(addLocation);
 
-
+  const { state, addLocation } = useContext(LocationContext);
+  const isFocused = useIsFocused();
+  const [err] = useLocation(isFocused, (location) => {
+    addLocation(location, state.recording);
+  }, state.recording);
 
   return (
-    <View>
+    <>
+      <TrackForm />
       <Map />
       {err ? <TouchableOpacity onPress={() => startWatching()}><Text>Please enable Location Service</Text></TouchableOpacity> : null}
-      <Button title='location' onPress={() => getCurrentLocation()} />
-    </View>
+    </>
   );
 };
 

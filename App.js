@@ -30,7 +30,7 @@ const TrackListFlow = () => {
 
 const HomeTab = createBottomTabNavigator();
 const BottomTab = () => {
-  return <HomeTab.Navigator>
+  return <HomeTab.Navigator keyboardHidesTabBar={true} >
     <HomeTab.Screen name='TrackListFlow' component={TrackListFlow} options={{ headerShown: false }} />
     <HomeTab.Screen name='TrackCreateScreen' component={TrackCreateScreen} />
     <HomeTab.Screen name='AccountScreen' component={AccountScreen} />

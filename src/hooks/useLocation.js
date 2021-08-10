@@ -1,15 +1,27 @@
+import { useNavigation } from '@react-navigation/core';
 import { useState, useEffect } from 'react';
 import Geolocation from 'react-native-location';
 
-export default (callback) => {
+export default (shouldTrack, callback, isRecording) => {
 
     const [err, setErr] = useState(null)
     const [loca, setLoca] = useState(null)
-    Geolocation.subscribeToLocationUpdates(location => {
-        // console.log(location)
-        location?.location?.coords != null ? setLoca(location) : '';
-        setLoca(location)
-    });
+    //const [subscribe, setSubscribe] = useState(null)
+
+    const navigation = useNavigation();
+
+    useEffect(() => {
+        if (shouldTrack || isRecording) {
+            const subscribe = navigation.addListener('blur', Geolocation.subscribeToLocationUpdates(location => {
+                // console.log(location)
+                location?.location?.coords != null ? setLoca(location) : '';
+                setLoca(location)
+            }))
+            return () => {
+                return subscribe();
+            }
+        }
+    }, [shouldTrack])
 
 
     useEffect(() => {
@@ -51,3 +63,15 @@ export default (callback) => {
 
     return [err]
 }
+
+// if (shouldTrack) {
+    //     const sub = Geolocation.subscribeToLocationUpdates(location => {
+    //         console.log(location)
+    //         location?.location?.coords != null ? setLoca(location) : '';
+    //         setLoca(location)
+    //     });
+    //     setSubscribe(sub)
+    // } else {
+    //     subscribe();
+    //     setSubscribe(null)
+    // }

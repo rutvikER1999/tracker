@@ -60,3 +60,14 @@ import MapViewDirections from 'react-native-maps-directions';
                 strokeColor="hotpink"
                 apikey={'AIzaSyCYtKtdLLvbA8CZ7vPC_AEs0fHO4T-lwt0'}
             /> */}
+
+
+            // const getCurrentLocation = async () => {
+//   console.log('runnn')
+//   try {
+//     const loc = await Geolocation.getLatestLocation((location) => console.log(location), (err) => console.log(err));
+//     console.log('ddd', loc)
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }

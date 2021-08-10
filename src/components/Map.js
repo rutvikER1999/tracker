@@ -1,16 +1,10 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { ActivityIndicator, StyleSheet, View, Text } from 'react-native';
 import MapView, { Circle, Marker, Polyline } from 'react-native-maps';
 import { Context as LocationContext } from '../context/LocationContext';
 
 const Map = () => {
 
-    // const [coords, setCoords] = useState(null);
-
-    // useEffect(() => {
-
-    //     currentLocation ? setCoords(currentLocation) : null;
-    // }, [coords])
 
     const { state: { currentLocation } } = useContext(LocationContext);
 
