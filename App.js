@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 //navigation
 import { NavigationContainer } from '@react-navigation/native';
@@ -32,7 +32,7 @@ const TrackListFlow = () => {
 const HomeTab = createBottomTabNavigator();
 const BottomTab = () => {
   return <HomeTab.Navigator keyboardHidesTabBar={true} >
-    <HomeTab.Screen name='TrackListFlow' component={TrackListFlow} options={{ headerShown: false }} />
+    <HomeTab.Screen name='TrackListFlow' component={TrackListFlow} options={{ title: 'Tracks' }} />
     <HomeTab.Screen name='TrackCreateScreen' component={TrackCreateScreen} />
     <HomeTab.Screen name='AccountScreen' component={AccountScreen} />
   </HomeTab.Navigator>

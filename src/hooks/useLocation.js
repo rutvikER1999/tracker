@@ -13,8 +13,8 @@ export default (shouldTrack, callback, isRecording) => {
     useEffect(() => {
         if (shouldTrack || isRecording) {
             const subscribe = navigation.addListener('blur', Geolocation.subscribeToLocationUpdates(location => {
-                // console.log(location)
-                location?.location?.coords != null ? setLoca(location) : '';
+                //console.log(location)
+                location?.coords != null ? setLoca(location) : '';
                 setLoca(location)
             }))
             return () => {
