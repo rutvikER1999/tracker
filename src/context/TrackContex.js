@@ -11,11 +11,19 @@ const trackReducer = (state, action) => {
 }
 
 const fetchTracks = dispatch => async () => {
-    const response = await trackerApi.get('/tracks');
-    dispatch({ type: 'fetch_tracks', payload: response.data })
+    try {
+        const response = await trackerApi.get('/tracks');
+        dispatch({ type: 'fetch_tracks', payload: response.data })
+    } catch (error) {
+        console.log('tracklists', error)
+    }
 }
 const createTracks = dispatch => async (name, locations) => {
-    await trackerApi.post('/tracks', { name, locations });
+    try {
+        await trackerApi.post('/tracks', { name, locations });
+    } catch (error) {
+        console.log(error)
+    }
 };
 
 

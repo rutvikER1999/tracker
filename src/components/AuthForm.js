@@ -29,7 +29,10 @@ const AuthForm = ({ headerText, errorMessage, onSubmit, submitButtonText }) => {
       ) : null}
       <Button
         title={submitButtonText}
-        onPress={() => onSubmit({ email, password })}
+        onPress={() => {
+          console.log('runnnn')
+          return onSubmit({ email, password })
+        }}
       />
     </>
   );

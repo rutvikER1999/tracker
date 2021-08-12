@@ -13,7 +13,7 @@ const TrackDetailScreen = () => {
   const initialCoords = track.locations[0].coords;
   const { latitude, longitude } = initialCoords;
 
-  const arr = track.locations.map(loc => loc.coords).filter((loc) => loc.latitude != 0 && loc.longitude != 0);
+  const arr = track.locations.map(loc => loc.coords).filter((loc) => loc.latitude != null && loc.longitude != null);
   console.log(arr)
   return (
     <>

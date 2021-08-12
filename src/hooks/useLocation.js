@@ -1,7 +1,6 @@
 import { useNavigation } from '@react-navigation/core';
 import { useState, useEffect } from 'react';
 import Geolocation from 'react-native-location';
-
 export default (shouldTrack, callback, isRecording) => {
 
     const [err, setErr] = useState(null)
@@ -13,7 +12,7 @@ export default (shouldTrack, callback, isRecording) => {
     useEffect(() => {
         if (shouldTrack || isRecording) {
             const subscribe = navigation.addListener('blur', Geolocation.subscribeToLocationUpdates(location => {
-                //console.log(location)
+                console.log('r', location)
                 location?.coords != null ? setLoca(location) : '';
                 setLoca(location)
             }))
@@ -55,6 +54,8 @@ export default (shouldTrack, callback, isRecording) => {
         } catch (error) {
             setErr('please allow location');
         }
+
+
     }
 
     useEffect(() => {
